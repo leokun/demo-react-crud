@@ -1,21 +1,26 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from './context'
 
 import 'bulma/css/bulma.min.css'
 
 import Index from './pages/index'
+import NewCollab from './pages/new'
 import Page404 from './pages/404'
 
 function App() {
   return (
-    <Router>
-      <Suspense fallback={<div>Chargement...</div>}>
-        <Switch>
-          <Route exact path="/collabs" component={Index}/>
-          <Route fallback component={Page404} />
-        </Switch>
-      </Suspense>
-  </Router>
+    <Provider>
+      <Router>
+        <Suspense fallback={<div>Chargement...</div>}>
+          <Switch>
+            <Route exact path="/collabs" component={Index}/>
+            <Route exact path="/collabs/new" component={NewCollab}/>
+            <Route fallback component={Page404} />
+          </Switch>
+        </Suspense>
+      </Router>
+    </Provider>
   )
 }
 

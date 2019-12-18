@@ -29,12 +29,12 @@ collaborators = [
 @app.get("/collaborator/desc")
 def get_collaborator_desc():
     return [
-        {"name": "name", "title": "Nom"},
-        {"name": "lastname", "title": "Prénom"},
-        {"name": "email", "title": "Email"},
-        {"name": "phone", "title": "N°"},
-        {"name": "created_at", "title": "Date de création"},
-        {"name": "updated_at", "title": "Date de mise à jour"}
+        {"name": "name", "title": "Nom", "type": "text", "placeholder": "votre nom de famille"},
+        {"name": "lastname", "title": "Prénom", "type": "text", "placeholder": "votre prénom"},
+        {"name": "email", "title": "Email", "type": "text", "placeholder": "votre email"},
+        {"name": "phone", "title": "N°", "type": "tel", "placeholder": "33123456789"},
+        {"name": "created_at", "title": "Date de création", "type": "datetime-local", "placeholder": "", "form-visible": False},
+        {"name": "updated_at", "title": "Date de mise à jour", "type": "datetime-local", "placeholder": "", "form-visible": False}
     ]
 
 @app.get("/collaborators")

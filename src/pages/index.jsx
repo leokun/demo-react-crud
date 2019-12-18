@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
+import { Consumer } from '../context'
+
 const axios = require('axios').default 
 
 export default class index extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {collaborators: [], desc: null}
+        this.state = {}
     }
 
     componentDidMount() {
@@ -41,13 +43,18 @@ export default class index extends Component {
 
     render() {
         return (
-            <div className="table-container">
-                <h1 className="title">Liste des collaborateurs</h1>
-                <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                    {this.getHeaders()}
-                    {this.getBody()}
-                </table>
-            </div>
+            <Consumer>
+                {value => {
+                    return <div className="table-container">
+                        <h1 className="title">Liste des collaborateurs</h1>
+                        <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                            {this.getHeaders()}
+                            {this.getBody()}
+                        </table>
+                    </div>
+                }}
+            </Consumer>
+            
         )
     }
 }
