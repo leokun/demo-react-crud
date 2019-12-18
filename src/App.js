@@ -16,6 +16,7 @@ function App() {
           <Switch>
             <Route exact path="/collabs" component={Index}/>
             <Route exact path="/collabs/new" component={NewCollab}/>
+            <Route exact path="/collabs/edit/:id" component={NewCollab}/>
             <Route fallback component={Page404} />
           </Switch>
         </Suspense>

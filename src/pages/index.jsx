@@ -15,6 +15,7 @@ export default class index extends Component {
         axios.get('http://api.crud.react:8000/collaborators')
             .then((response)=>{
                 this.setState({collaborators: response.data})
+                console.log(response.data)
             })
         axios.get('http://api.crud.react:8000/collaborator/desc')
             .then((response)=>{
@@ -34,13 +35,20 @@ export default class index extends Component {
     getBody() {
         if (this.state.desc != null)return <tbody>
             {this.state.collaborators.map((collabo, index) => 
-            <tr key={index}>
+            <tr key={index} onClick={this.editCollabo.bind(this, collabo.id)}>
                 {this.state.desc.map((elem)=> 
                     <td key={elem.name + "_" + index}>{collabo[elem.name]}</td>)}
             </tr>)}
         </tbody>
     }
 
+    newPage = () => {
+        this.props.history.push('/collabs/new')
+    }
+
+    editCollabo = (id, e) => {
+        this.props.history.push('/collabs/edit/'+id)
+    }
     render() {
         return (
             <Consumer>
@@ -51,6 +59,10 @@ export default class index extends Component {
                             {this.getHeaders()}
                             {this.getBody()}
                         </table>
+
+                        <div className="control">
+                            <button className="button is-link" onClick={this.newPage}>nouveau</button>
+                        </div>
                     </div>
                 }}
             </Consumer>

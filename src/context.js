@@ -1,15 +1,19 @@
 import React, { Component } from "react"
 
 const Context = React.createContext()
+const axios = require('axios').default 
 
 
 const reducer = (state, action) => {
 
     switch(action.type) {
         case 'CREATE_COLLABORATOR':
-            return {
-                collaborators: state.collaborators.append(action.payload)
-            }
+            axios.put('http://api.crud.react:8000/collaborator', action.payload)
+            .then((response) => {
+                return true
+            })
+
+            return false
         case 'DELETE_COLLABORATOR':
             return {
                 collaborators: state.collaborators.filter(collaborator => 

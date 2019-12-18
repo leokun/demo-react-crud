@@ -1,5 +1,5 @@
 up: install
-	docker-compose up
+	docker-compose up --build
 
 install:
 	docker-compose run --rm nodejs yarn install

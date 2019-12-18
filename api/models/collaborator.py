@@ -9,6 +9,6 @@ class Collaborator(BaseModel):
     lastname: str
     email: str
     phone: int
-    description: str
+    description: Optional[str]
     created_at: Optional[datetime]
     updated_at: Optional[datetime]
