@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  nodejs:
+    image: node:13-slim
+    container_name: nodejs
+    working_dir: /app
+    command: yarn start
+    expose: ['80']
+    volumes: 
+      - .:/app
+    environment: 
+      - DOMAIN_NAME=default:crud.react
+
+  api:
+    build: ./docker/api
+    container_name: api
+    volumes: 
+      - ./api:/app
+    environment: 
+      - DOMAIN_NAME=default:api.crud.react
