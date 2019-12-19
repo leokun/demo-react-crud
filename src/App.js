@@ -5,6 +5,7 @@ import { Provider } from './context'
 import 'bulma/css/bulma.min.css'
 
 import Index from './pages/index'
+import IndexST from './pages/indexST'
 import NewCollab from './pages/new'
 import Page404 from './pages/404'
 
@@ -14,10 +15,11 @@ function App() {
       <Router>
         <Suspense fallback={<div>Chargement...</div>}>
           <Switch>
-            <Route exact path="/collabs" component={Index}/>
-            <Route exact path="/collabs/new" component={NewCollab}/>
-            <Route exact path="/collabs/edit/:id" component={NewCollab}/>
-            <Route fallback component={Page404} />
+          <Route exact path="/collabs" component={Index}/>
+          <Route exact path="/collabsSansTitle" component={IndexST}/>
+          <Route exact path="/collabs/new" component={NewCollab}/>
+          <Route exact path="/collabs/edit/:id" component={NewCollab}/>
+          <Route fallback component={Page404} />
           </Switch>
         </Suspense>
       </Router>

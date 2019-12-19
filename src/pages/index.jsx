@@ -28,6 +28,18 @@ export default class index extends Component {
             })
     }
 
+    newPage = () => {
+        this.props.history.push('/collabs/new')
+    }
+
+    editCollabo = (id, e) => {
+        this.props.history.push('/collabs/edit/'+id)
+    }
+
+    bindDispatch(dispatch) {
+        this.dispatch = dispatch
+    }
+
     getHeaders() {
         if (this.state.desc != null) return <thead>
             <tr>
@@ -45,18 +57,6 @@ export default class index extends Component {
                     <td key={elem.name + "_" + index}>{collabo[elem.name]}</td>)}
             </tr>)}
         </tbody>
-    }
-
-    newPage = () => {
-        this.props.history.push('/collabs/new')
-    }
-
-    editCollabo = (id, e) => {
-        this.props.history.push('/collabs/edit/'+id)
-    }
-
-    bindDispatch(dispatch) {
-        this.dispatch = dispatch
     }
 
     render() {
