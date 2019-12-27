@@ -15,14 +15,14 @@ export default class index extends Component {
         //debugger
         //let collabs = this.dispatch({type: 'GET_COLLABORATORS'})
         //this.setState({collaborators: collabs})
-        axios.get('http://api.crud.react:8000/collaborators')
+        axios.get('http://localhost:8000/collaborators')
             .then((response)=>{
                 this.setState({collaborators: response.data})
                 console.log(response.data)
             })
         //let desc = this.dispatch({type: 'GET_COLLABORATOR_DESC'})
         //this.setState({desc: desc})
-        axios.get('http://api.crud.react:8000/collaborator/desc')
+        axios.get('http://localhost:8000/collaborator/desc')
             .then((response)=>{
                 this.setState({desc: response.data})
             })

@@ -15,12 +15,12 @@ export default class NewCollab extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://api.crud.react:8000/collaborator/desc')
+        axios.get('http://localhost:8000/collaborator/desc')
             .then((response) => {
                 this.setState({__desc: response.data})
             })
         if (this.props.match.params.hasOwnProperty('id')) {
-            axios.get('http://api.crud.react:8000/collaborator/' + this.props.match.params.id)
+            axios.get('http://localhost:8000/collaborator/' + this.props.match.params.id)
             .then((response) => {
                 this.setState({...this.state, ...response.data})
                 this.title = "Editer le collaborateurs"

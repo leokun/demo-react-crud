@@ -10,7 +10,7 @@ const reducer = (state, action) => {
 
         case 'GET_COLLABORATOR_DESC':
 
-            axios.get('http://api.crud.react:8000/collaborator/desc')
+            axios.get('http://localhost:8000/collaborator/desc')
             .then((response) => {
                 this.setState({desc: response.data})
             })
@@ -18,7 +18,7 @@ const reducer = (state, action) => {
 
         case 'GET_COLLABORATORS':
 
-            axios.get('http://api.crud.react:8000/collaborators')
+            axios.get('http://localhost:8000/collaborators')
             .then((response) => {
                 let max = 0
                 response.data.forEach(collaborator => {
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 
         case 'CREATE_COLLABORATOR':
 
-            axios.put('http://api.crud.react:8000/collaborator', action.payload)
+            axios.put('http://localhost:8000/collaborator', action.payload)
             .then(() => {
                 this.setState({last_id: this.state.last_id +1 })
                 return true
@@ -42,7 +42,7 @@ const reducer = (state, action) => {
 
         case 'UPDATE_COLLABORATOR':
 
-            axios.post('http://api.crud.react:8000/collaborator/' + action.payload.id, action.payload)
+            axios.post('http://localhost:8000/collaborator/' + action.payload.id, action.payload)
             .then(() => {
                 return true
             })
@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 
         case 'DELETE_COLLABORATOR':
 
-            axios.delete('http://api.crud.react:8000/collaborator/' + action.payload)
+            axios.delete('http://localhost:8000/collaborator/' + action.payload)
             .then(() => {
                 return true
             })

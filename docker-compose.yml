@@ -7,16 +7,15 @@ services:
     container_name: nodejs
     working_dir: /app
     command: yarn start
-    expose: ['80']
+    ports: ['3000:3000']
     volumes: 
       - .:/app
-    environment: 
-      - DOMAIN_NAME=default:crud.react
+    links:
+      - api
 
   api:
     build: ./docker/api
     container_name: api
+    ports: ['8000:8000']
     volumes: 
       - ./api:/app
-    environment: 
-      - DOMAIN_NAME=default:api.crud.react
